@@ -1,17 +1,23 @@
 package com.ulht.pw.service;
 
-import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.stereotype.Service;
 
-@RestController
-@RequestMapping("/api/client")
+import com.ulht.pw.domain.ClientEntity;
+import com.ulht.pw.repository.ClientRepository;
+
+import lombok.RequiredArgsConstructor;
+
+@Service
+@RequiredArgsConstructor
 public class ClientService {
 
-	@GetMapping("/{id}")
-	public ResponseEntity<String> test(@PathVariable(value = "id") Long clientId) {
-		return ResponseEntity.ok("String");
+	private final ClientRepository clientRepository;
+
+	public ClientEntity searchClientById(Long clientId) {
+		ClientEntity client = clientRepository.findById(clientId).orElse(null);
+		if (client == null) {
+			// DO SOMETHING
+		}
+		return client;
 	}
 }
