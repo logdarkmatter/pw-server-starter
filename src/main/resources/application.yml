@@ -1,0 +1,42 @@
+# Spring Boot configuration
+spring:
+  profiles:
+    active: development
+    
+  application:
+    name: PW-Server
+        
+  # Database
+  datasource:
+    driverClassName: org.postgresql.Driver
+    url: jdbc:postgresql://ec2-54-246-92-116.eu-west-1.compute.amazonaws.com:5432/d2p13cu79mfhbp
+    username: xujycahtgzwuax
+    password: bb4ff96fb930fc3bfe99823cbd1518cace4bd8bf65d41151bf73adebc48ae2a1
+    hikari:
+      poolName: Hikari
+      
+  # JPA properties
+  jpa:
+    show-sql: true
+    database: POSTGRESQL
+    properties:
+      hibernate:
+        temp:
+          use_jdbc_metadata_defaults: false
+    hibernate:
+      ddl-auto: validate
+    
+# Logger configuration
+logging:
+  pattern:
+    console: "%d %-5level %logger : %msg%n"
+  level:
+    org.springframework: INFO
+    org.hibernate: DEBUG
+           
+# Server configuration
+server:
+  port: 8080
+  servlet:
+    session:
+      timeout: 30
