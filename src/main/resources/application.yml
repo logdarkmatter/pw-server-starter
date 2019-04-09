@@ -25,6 +25,15 @@ spring:
           use_jdbc_metadata_defaults: false
     hibernate:
       ddl-auto: validate
+ 
+ # Security properties
+  security:
+    authentication:
+      jwt:
+        # This token must be encoded using Base64 and be at least 256 bits long (you can type `openssl rand -base64 64` on your command line to generate a 512 bits one)
+        base64-secret: YmQ1MzI0ZDAzZGYxZGM3ZjkyNDBlNjMwY2VmYzk0MDY2M2Q3MTFlNjNjZDI3MzMyMzk0OWM2MGJhOGM3NTI0OGQwZjAyNzYxYzU1NTFlMDA1ODk5ZjM5NmQ2Y2Q1NDVlODczYWJkMmQ2NDAzODcyMTkxMDA0NmYxYWZkYzVmZmU=
+        # Token is valid 24 hours
+        token-validity-in-seconds: 86400
     
 # Logger configuration
 logging:

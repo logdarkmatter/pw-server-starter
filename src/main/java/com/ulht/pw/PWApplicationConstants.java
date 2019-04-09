@@ -1,5 +1,8 @@
 package com.ulht.pw;
 
+import lombok.NoArgsConstructor;
+
+@NoArgsConstructor
 public class PWApplicationConstants {
 
 	/** Root package for the application. Used for Spring annotation configuration, etc. */
@@ -16,4 +19,11 @@ public class PWApplicationConstants {
 
 	/** Location of JPA entities */
 	public static final String JPA_ENTITIES_PACKAGE = "com.ulht.pw.domain";
+
+	/** Regex for acceptable logins */
+	public static final String LOGIN_REGEX = "^[_.@A-Za-z0-9-]*$";
+
+	public static final String SYSTEM_ACCOUNT = "system";
+	public static final String ANONYMOUS_USER = "anonymoususer";
+	public static final String DEFAULT_LANGUAGE = "pt-pt";
 }
