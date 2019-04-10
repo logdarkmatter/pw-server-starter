@@ -1,8 +1,8 @@
 package com.ulht.pw.domain;
 
 import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashSet;
+import java.util.Set;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
@@ -11,10 +11,12 @@ import javax.persistence.Table;
 
 import lombok.Data;
 import lombok.EqualsAndHashCode;
+import lombok.NoArgsConstructor;
 
 @Entity
 @Table(name = "client")
 @Data
+@NoArgsConstructor
 @EqualsAndHashCode(callSuper = false)
 public class ClientEntity extends BaseEntity {
 	private static final long serialVersionUID = 1L;
@@ -24,9 +26,9 @@ public class ClientEntity extends BaseEntity {
 	private LocalDate dateOfBirth;
 
 	@OneToMany(mappedBy = "client", cascade = CascadeType.ALL, orphanRemoval = true)
-	private List<AddressEntity> addresses = new ArrayList<>();
+	private Set<AddressEntity> addresses = new HashSet<>();
 
 	@OneToMany(mappedBy = "client", cascade = CascadeType.ALL, orphanRemoval = true)
-	private List<ContactEntity> contacts = new ArrayList<>();
+	private Set<ContactEntity> contacts = new HashSet<>();
 
 }

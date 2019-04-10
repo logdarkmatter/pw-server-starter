@@ -1,0 +1,292 @@
+{
+	"info": {
+		"_postman_id": "4db1b1f4-c38e-4ea5-98da-24edfd72b596",
+		"name": "PW",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "http://localhost:8080/api/authenticate",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"username\": \"test\",\n\t\"password\": \"asdadadas\"\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/authenticate",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"authenticate"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "list-clients",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ1c2VyIiwiYXV0aCI6IlJPTEVfVVNFUiIsImV4cCI6MTU1NDkzMjQzM30.jGLLqVWj61Yk8_NxEapGWiEY7r1APO6rZF0kX0iwFuh6KF_PXJhcSLmLsHfc6zoNXDESZETyNa7WnvRwbyFfzA",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/client/list",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"client",
+						"list"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "search-client-by-id",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ1c2VyIiwiYXV0aCI6IlJPTEVfVVNFUiIsImV4cCI6MTU1NDkzMjQzM30.jGLLqVWj61Yk8_NxEapGWiEY7r1APO6rZF0kX0iwFuh6KF_PXJhcSLmLsHfc6zoNXDESZETyNa7WnvRwbyFfzA",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/client/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"client",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "update-client",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ1c2VyIiwiYXV0aCI6IlJPTEVfVVNFUiIsImV4cCI6MTU1NDkzMjQzM30.jGLLqVWj61Yk8_NxEapGWiEY7r1APO6rZF0kX0iwFuh6KF_PXJhcSLmLsHfc6zoNXDESZETyNa7WnvRwbyFfzA",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/client/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"client",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "update-client Copy",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ1c2VyIiwiYXV0aCI6IlJPTEVfVVNFUiIsImV4cCI6MTU1NDkzMjQzM30.jGLLqVWj61Yk8_NxEapGWiEY7r1APO6rZF0kX0iwFuh6KF_PXJhcSLmLsHfc6zoNXDESZETyNa7WnvRwbyFfzA",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/client/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"client",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "save-client",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ1c2VyIiwiYXV0aCI6IlJPTEVfVVNFUiIsImV4cCI6MTU1NDk4NzIzN30.QN8c7zQIBoJSnM2bzJMkuW4alvrUPUYM1GuKqTT46gX6_OIeqdEWNekNyypDxwzB0IMWwm0TF47wRjkeGeWhSA",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"id\": null,\n    \"createdBy\": null,\n    \"createdDate\": null,\n    \"lastModifiedBy\": null,\n    \"lastModifiedDate\": null,\n    \"lastName\": \"de Almeida Perdigão\",\n    \"firstName\": \"Pedro\",\n    \"dateOfBirth\": \"2019-04-09\",\n    \"contacts\": [\n        {\n            \"id\": null,\n            \"createdBy\": null,\n            \"createdDate\": null,\n            \"lastModifiedBy\": null,\n            \"lastModifiedDate\": null,\n            \"contactType\": \"EMAIL\",\n            \"contact\": \"teste2@email.com\",\n            \"new\": false\n        },\n        {\n            \"id\": null,\n            \"createdBy\": null,\n            \"createdDate\": null,\n            \"lastModifiedBy\": null,\n            \"lastModifiedDate\": null,\n            \"contactType\": \"PHONE\",\n            \"contact\": \"965452456\",\n            \"new\": false\n        }\n    ],\n    \"addresses\": [\n        {\n            \"id\": null,\n            \"createdBy\": null,\n            \"createdDate\": null,\n            \"lastModifiedBy\": null,\n            \"lastModifiedDate\": null,\n            \"address\": \"Av. José Malhoa 126\",\n            \"postalCode\": \"1070-159 Lisboa\",\n            \"new\": false\n        },\n        {\n            \"id\": null,\n            \"createdBy\": null,\n            \"createdDate\": null,\n            \"lastModifiedBy\": null,\n            \"lastModifiedDate\": null,\n            \"address\": \"Campo Grande 3762\",\n            \"postalCode\": \"1749-024 Lisboa\",\n            \"new\": false\n        }\n    ],\n    \"new\": false\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/client/save",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"client",
+						"save"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "delete-client",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ1c2VyIiwiYXV0aCI6IlJPTEVfVVNFUiIsImV4cCI6MTU1NDkzMjQzM30.jGLLqVWj61Yk8_NxEapGWiEY7r1APO6rZF0kX0iwFuh6KF_PXJhcSLmLsHfc6zoNXDESZETyNa7WnvRwbyFfzA",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/client/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"client",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "list-users",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ1c2VyIiwiYXV0aCI6IlJPTEVfVVNFUiIsImV4cCI6MTU1NDkzMjQzM30.jGLLqVWj61Yk8_NxEapGWiEY7r1APO6rZF0kX0iwFuh6KF_PXJhcSLmLsHfc6zoNXDESZETyNa7WnvRwbyFfzA",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/user/list",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"user",
+						"list"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

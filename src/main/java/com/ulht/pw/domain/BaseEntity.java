@@ -8,6 +8,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.MappedSuperclass;
+import javax.persistence.PrePersist;
+import javax.persistence.PreUpdate;
 
 import org.springframework.data.annotation.CreatedBy;
 import org.springframework.data.annotation.CreatedDate;
@@ -15,6 +17,8 @@ import org.springframework.data.annotation.LastModifiedBy;
 import org.springframework.data.annotation.LastModifiedDate;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.ulht.pw.PWApplicationConstants;
+import com.ulht.pw.security.SecurityUtils;
 
 import lombok.Data;
 
@@ -35,7 +39,7 @@ public class BaseEntity implements Serializable {
 	@CreatedDate
 	@Column(name = "created_date", updatable = false)
 	@JsonIgnore
-	private Instant createdDate = Instant.now();
+	private Instant createdDate;
 
 	@LastModifiedBy
 	@Column(name = "last_modified_by", length = 50)
@@ -45,6 +49,18 @@ public class BaseEntity implements Serializable {
 	@LastModifiedDate
 	@Column(name = "last_modified_date")
 	@JsonIgnore
-	private Instant lastModifiedDate = Instant.now();
+	private Instant lastModifiedDate;
+
+	@PrePersist
+	void atCreate() {
+		createdBy = SecurityUtils.getCurrentUserLogin().orElse(PWApplicationConstants.ANONYMOUS_USER);
+		createdDate = Instant.now();
+	}
+
+	@PreUpdate
+	void atUpdate() {
+		lastModifiedBy = SecurityUtils.getCurrentUserLogin().orElse(PWApplicationConstants.ANONYMOUS_USER);
+		lastModifiedDate = Instant.now();
+	}
 
 }

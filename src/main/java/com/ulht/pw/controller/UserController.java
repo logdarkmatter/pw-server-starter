@@ -7,8 +7,6 @@ import java.util.Optional;
 
 import javax.validation.Valid;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -25,7 +23,7 @@ import com.ulht.pw.controller.rest.errors.BadRequestAlertException;
 import com.ulht.pw.controller.rest.errors.EmailAlreadyUsedException;
 import com.ulht.pw.controller.rest.errors.LoginAlreadyUsedException;
 import com.ulht.pw.domain.UserEntity;
-import com.ulht.pw.dto.UserDTO;
+import com.ulht.pw.dto.user.UserDTO;
 import com.ulht.pw.repository.UserRepository;
 import com.ulht.pw.security.AuthoritiesConstants;
 import com.ulht.pw.service.UserService;
@@ -33,13 +31,13 @@ import com.ulht.pw.service.util.HeaderUtil;
 import com.ulht.pw.service.util.ResponseUtil;
 
 import lombok.RequiredArgsConstructor;
+import lombok.extern.log4j.Log4j2;
 
+@Log4j2
 @RestController
 @RequestMapping("/api/user")
 @RequiredArgsConstructor
 public class UserController {
-
-	private final Logger log = LoggerFactory.getLogger(ClientController.class);
 
 	private static final String ENTITY_NAME = "userEntity";
 

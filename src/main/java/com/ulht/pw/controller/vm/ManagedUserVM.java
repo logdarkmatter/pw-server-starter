@@ -2,7 +2,7 @@ package com.ulht.pw.controller.vm;
 
 import javax.validation.constraints.Size;
 
-import com.ulht.pw.dto.UserDTO;
+import com.ulht.pw.dto.user.UserDTO;
 
 import lombok.Data;
 import lombok.EqualsAndHashCode;

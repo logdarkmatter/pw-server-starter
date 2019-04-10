@@ -1,4 +1,4 @@
-package com.ulht.pw.dto;
+package com.ulht.pw.dto.user;
 
 import java.time.Instant;
 import java.util.Set;

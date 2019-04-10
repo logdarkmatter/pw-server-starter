@@ -6,8 +6,6 @@ import java.util.Optional;
 import java.util.Set;
 import java.util.stream.Collectors;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -16,7 +14,7 @@ import com.ulht.pw.controller.rest.errors.EmailAlreadyUsedException;
 import com.ulht.pw.controller.rest.errors.LoginAlreadyUsedException;
 import com.ulht.pw.domain.AuthorityEntity;
 import com.ulht.pw.domain.UserEntity;
-import com.ulht.pw.dto.UserDTO;
+import com.ulht.pw.dto.user.UserDTO;
 import com.ulht.pw.repository.AuthorityRepository;
 import com.ulht.pw.repository.UserRepository;
 import com.ulht.pw.security.AuthoritiesConstants;
@@ -24,13 +22,13 @@ import com.ulht.pw.security.SecurityUtils;
 import com.ulht.pw.service.util.RandomUtil;
 
 import lombok.RequiredArgsConstructor;
+import lombok.extern.log4j.Log4j2;
 
+@Log4j2
 @Service
 @Transactional
 @RequiredArgsConstructor
 public class UserService {
-
-	private final Logger log = LoggerFactory.getLogger(UserService.class);
 
 	private final UserRepository userRepository;
 
