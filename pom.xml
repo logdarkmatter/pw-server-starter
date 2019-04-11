@@ -117,8 +117,11 @@
 		<dependency>
 		    <groupId>org.hibernate</groupId>
 		    <artifactId>hibernate-envers</artifactId>
-		    <version>5.4.2.Final</version>
-		</dependency>
+		    </dependency>
+		<dependency>
+		    <groupId>org.apache.commons</groupId>
+		    <artifactId>commons-lang3</artifactId>
+		    </dependency>
 	</dependencies>
 
 	<build>

@@ -74,6 +74,41 @@ CREATE TABLE public.contact (
 	CONSTRAINT ux_contact_contact UNIQUE (contact)
 );
 
+DROP table if exists public.entity_audit_event cascade;
+CREATE TABLE public.entity_audit_event (
+	id bigserial NOT NULL,
+	entity_id int8 NOT NULL,
+	entity_type varchar(255) NOT NULL,
+	"action" varchar(20) NOT NULL,
+	entity_value text NULL,
+	commit_version int4 NULL,
+	last_modified_by varchar(100) NULL,
+	last_modified_date timestamp NOT NULL,
+	CONSTRAINT pk_entity_audit_event PRIMARY KEY (id)
+);
+CREATE INDEX idx_entity_audit_event_entity_id ON public.entity_audit_event USING btree (entity_id);
+CREATE INDEX idx_entity_audit_event_entity_type ON public.entity_audit_event USING btree (entity_type);
+
+DROP table if exists public.persistent_audit_event cascade;
+CREATE TABLE public.persistent_audit_event (
+	event_id int8 NOT NULL,
+	principal varchar(50) NOT NULL,
+	event_date timestamp NULL,
+	event_type varchar(255) NULL,
+	CONSTRAINT pk_persistent_audit_event PRIMARY KEY (event_id)
+);
+CREATE INDEX idx_persistent_audit_event ON public.persistent_audit_event USING btree (principal, event_date);
+
+DROP table if exists public.persistent_audit_evt_data cascade;
+CREATE TABLE public.persistent_audit_evt_data (
+	event_id int8 NOT NULL,
+	"name" varchar(150) NOT NULL,
+	value varchar(255) NULL,
+	CONSTRAINT persistent_audit_evt_data_pkey PRIMARY KEY (event_id, name),
+	CONSTRAINT fk_evt_pers_audit_evt_data FOREIGN KEY (event_id) REFERENCES persistent_audit_event(event_id)
+);
+CREATE INDEX idx_persistent_audit_evt_data ON public.persistent_audit_evt_data USING btree (event_id);
+
 commit;
 
 INSERT INTO public.client (first_name,last_name,date_of_birth,created_by,created_date,last_modified_by,last_modified_date) VALUES 

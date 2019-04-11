@@ -1,4 +1,4 @@
-package com.ulht.pw.repository;
+package com.ulht.pw.repository.audit;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 

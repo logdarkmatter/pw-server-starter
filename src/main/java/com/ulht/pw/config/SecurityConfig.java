@@ -5,6 +5,7 @@ import javax.annotation.PostConstruct;
 import org.springframework.beans.factory.BeanInitializationException;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Import;
 import org.springframework.http.HttpMethod;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
@@ -17,16 +18,21 @@ import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
-import org.springframework.web.servlet.config.annotation.CorsRegistry;
-import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
+import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
+import org.springframework.web.filter.CorsFilter;
+import org.zalando.problem.spring.web.advice.security.SecurityProblemSupport;
 
 import com.ulht.pw.security.AuthoritiesConstants;
 import com.ulht.pw.security.jwt.JWTConfigurer;
 import com.ulht.pw.security.jwt.TokenProvider;
 
+import lombok.RequiredArgsConstructor;
+
 @Configuration
 @EnableWebSecurity
 @EnableGlobalMethodSecurity(prePostEnabled = true, securedEnabled = true)
+@Import(SecurityProblemSupport.class)
+@RequiredArgsConstructor
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
 	private final AuthenticationManagerBuilder authenticationManagerBuilder;
@@ -35,14 +41,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
 	private final TokenProvider tokenProvider;
 
-	public static final String ANGULAR_ORIGIN = "http://localhost:3100/";
+	private final CorsFilter corsFilter;
 
-	public SecurityConfig(AuthenticationManagerBuilder authenticationManagerBuilder, UserDetailsService userDetailsService,
-			TokenProvider tokenProvider) {
-		this.authenticationManagerBuilder = authenticationManagerBuilder;
-		this.userDetailsService = userDetailsService;
-		this.tokenProvider = tokenProvider;
-	}
+	private final SecurityProblemSupport problemSupport;
 
 	@PostConstruct
 	public void init() {
@@ -81,6 +82,11 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 		http
 				.csrf()
 				.disable()
+				.addFilterBefore(corsFilter, UsernamePasswordAuthenticationFilter.class)
+				.exceptionHandling()
+				.authenticationEntryPoint(problemSupport)
+				.accessDeniedHandler(problemSupport)
+				.and()
 				.headers()
 				.frameOptions()
 				.disable()
@@ -94,24 +100,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 				.antMatchers("/management/**").hasAuthority(AuthoritiesConstants.ADMIN)
 				.and()
 				.apply(securityConfigurerAdapter());
-	}
-
-	@Bean
-	public WebMvcConfigurer corsConfigurer() {
-		return new WebMvcConfigurer() {
-			@Override
-			public void addCorsMappings(CorsRegistry registry) {
-				// @formatter:off
-				registry
-					.addMapping("/api/**")
-					.allowCredentials(true)
-					.allowedHeaders("*")
-					.allowedMethods("*")
-					.allowedOrigins(ANGULAR_ORIGIN);
-				// formatter:on
-				WebMvcConfigurer.super.addCorsMappings(registry);
-			}
-		};
 	}
 
 	private JWTConfigurer securityConfigurerAdapter() {

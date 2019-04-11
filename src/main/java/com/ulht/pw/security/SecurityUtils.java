@@ -6,13 +6,13 @@ import org.springframework.security.core.context.SecurityContext;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 
+import lombok.NoArgsConstructor;
+
 /**
  * Utility class for Spring Security.
  */
+@NoArgsConstructor
 public final class SecurityUtils {
-
-	private SecurityUtils() {
-	}
 
 	/**
 	 * Get the login of the current user.

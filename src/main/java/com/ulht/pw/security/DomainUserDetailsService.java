@@ -12,10 +12,12 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.ulht.pw.domain.UserEntity;
 import com.ulht.pw.repository.UserRepository;
 
+import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 
 /**
@@ -23,13 +25,11 @@ import lombok.extern.log4j.Log4j2;
  */
 @Log4j2
 @Component("userDetailsService")
+@RequestMapping("api/management/audits")
+@RequiredArgsConstructor
 public class DomainUserDetailsService implements UserDetailsService {
 
 	private final UserRepository userRepository;
-
-	public DomainUserDetailsService(UserRepository userRepository) {
-		this.userRepository = userRepository;
-	}
 
 	@Override
 	@Transactional
