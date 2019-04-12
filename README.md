@@ -35,3 +35,7 @@ In order to help you on setup our database there is an sql file [db_init.sql](ht
 - client
 - address (OneToMany with client)
 - contact (OneToMany with client)
+
+# TUTORIAL VIDEOS #
+- [PART 1](https://drive.google.com/file/d/1QLqjqgHUtxbIBZqvimWBe0MwZIcpnmhz/view?usp=sharing)
+- [PART 2](https://drive.google.com/file/d/1OziO5keamiTCjGZl5405INFbFC5Qc5Mi/view?usp=sharing)
