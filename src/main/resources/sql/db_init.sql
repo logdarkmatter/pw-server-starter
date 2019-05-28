@@ -109,6 +109,36 @@ CREATE TABLE public.persistent_audit_evt_data (
 );
 CREATE INDEX idx_persistent_audit_evt_data ON public.persistent_audit_evt_data USING btree (event_id);
 
+DROP table if exists public.product cascade;
+CREATE TABLE public.product (
+	id BIGSERIAL NOT NULL,
+	product_name varchar(255) NULL,
+	product_code varchar(255) NULL,
+	desription varchar(255) NULL,
+	expire_date date NULL,
+	brand varchar(255) null,
+	created_by varchar(50) NOT NULL,
+	created_date timestamp NULL,
+	last_modified_by varchar(50) NULL,
+	last_modified_date timestamp NULL,
+	CONSTRAINT pk_product PRIMARY KEY (id)
+);
+
+DROP table if exists public.	 cascade;
+CREATE TABLE public.product_precautions (
+	id BIGSERIAL NOT NULL,
+	product_id int8 NOT NULL,
+	description varchar(255) NULL,
+	precaution_type varchar(255) NULL,
+	created_by varchar(50) NOT NULL,
+	created_date timestamp NULL,
+	last_modified_by varchar(50) NULL,
+	last_modified_date timestamp NULL,
+	CONSTRAINT pk_product_precaution PRIMARY KEY (id),
+	CONSTRAINT fk_product_id FOREIGN KEY (product_id) REFERENCES public.product(id)
+);
+
+
 commit;
 
 INSERT INTO public.client (first_name,last_name,date_of_birth,created_by,created_date,last_modified_by,last_modified_date) VALUES 
